@@ -11,6 +11,7 @@ from announcement import makeAnnouncement
 from routine import runRoutineIfAvailable
 from helper import clearScreen
 from scheduler import scheduler
+from helper import uploadToDatabase
 
 
 env = json.load(open("config.json", "r"))
@@ -37,9 +38,10 @@ def menu():
         print("How do you want to proceed?")
         print("1. Announcement API")
         print("2. Routine API")
-        print("** Below options will only announce if there are contest available today **")
-        print("3. Trigger Announcement to check if everything is working fine")
-        print("4. Trigger Routine to check if everything is working fine")
+        print("3. Populate Database with Contests (Useful for first time)")
+        print("===== Below options will only announce if there are contest available today =====")
+        print("4. Trigger Announcement to check if everything is working fine")
+        print("5. Trigger Routine to check if everything is working fine")
         var_input = input("\n>>> ")
         return var_input
     else:
@@ -62,11 +64,17 @@ def main():
             scheduler()
         elif var_input == "3":
             clearScreen()
+            uploadToDatabase()
+            print("Database Populated")
+            time.sleep(2)
+            clearScreen()
+        elif var_input == "4":
+            clearScreen()
             makeAnnouncement()
             print("\nYou will hear your alexa announce if everything is working fine")
             time.sleep(5)
             clearScreen()
-        elif var_input == "4":
+        elif var_input == "5":
             clearScreen()
             runRoutineIfAvailable()
             print("You will hear your alexa announce if everything is working fine")
