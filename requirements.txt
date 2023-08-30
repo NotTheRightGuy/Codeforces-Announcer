@@ -1,3 +1,3 @@
+typer
 requests
-python-dotenv
-schedule
+supabase

@@ -13,16 +13,6 @@ def runEverydayAt(time, func):
     schedule.every().day.at(time).do(func)
 
 
-def runEvery10Second(func):
-    """
-    Runs the given function every second
-
-    Args:
-        func (function): function to be executed
-    """
-    schedule.every(10).seconds.do(func)
-
-
 def scheduler():
     """
     Runs the scheduler

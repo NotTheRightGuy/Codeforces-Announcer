@@ -1,0 +1,13 @@
+{
+    "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxxem10c3p5dmJ3b3N3dXdsZ3pqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTMzODM4NjgsImV4cCI6MjAwODk1OTg2OH0.7nOhYTWB8qvvR1boBXzUO2bvl9iZnN-zR-xWYc6QpYk",
+    "SUPABASE_URL": "https://lqzmtszyvbwoswuwlgzj.supabase.co",
+
+    "VOICEMONKEY_API": "54c5ec103740051f04611a2e9448cd7b_63bb1d2a627d8f56f721beaab30448db",
+
+    "ALEXA_DEVICE_NAME": "vm--echo-dot",
+    "ROUTINE_NAME": "contest-alert-trigger",
+
+    "DELETE_CONTEST_TIME": "00:00",
+    "UPLOAD_TO_DATABASE_TIME": "06:00",
+    "EVENT_TRIGGER_TIME": "07:40"
+}

@@ -21,7 +21,7 @@ Author : @NotTheRightGuy
 
 import requests
 import datetime
-from supabaseClient import get_client
+from Client import get_client
 
 client = get_client()
 
