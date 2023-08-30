@@ -7,7 +7,8 @@ from helper import extractHourMinute
 from helper import to_12_hour_format
 from helper import contestToday
 from helper import fetchContestFromDatabase
-from dotenv import load_dotenv
+import time
+from helper import clearScreen
 
 env = json.load(open("config.json", "r"))
 announce_time = env["EVENT_TRIGGER_TIME"]
@@ -28,9 +29,8 @@ def makeAnnouncement():
 
 
 def announcement_main():
-    runEverydayAt(delete_time, deletePastContest())
-    runEverydayAt(upload_time, uploadToDatabase())
-    runEverydayAt(announce_time, makeAnnouncement())
-
-
-makeAnnouncement()
+    print("Starting Announcement API\n")
+    print("Announcement will be made at: ", announce_time)
+    runEverydayAt(delete_time, deletePastContest)
+    runEverydayAt(upload_time, uploadToDatabase)
+    runEverydayAt(announce_time, makeAnnouncement)

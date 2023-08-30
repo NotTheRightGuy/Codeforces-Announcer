@@ -1,15 +1,23 @@
 """
 Author : NotTheRightGuy
 """
-import os
+
 import sys
 import json
 import time
+from announcement import announcement_main
+from routine import routine_main
+from announcement import makeAnnouncement
+from routine import runRoutineIfAvailable
+from helper import clearScreen
+from scheduler import scheduler
+
 
 env = json.load(open("config.json", "r"))
 
 
 def checkIfAllGood():
+    print("Checking if all the variables in configs are set")
     count = 0
     for key, value in env.items():
         time.sleep(0.2)
@@ -22,19 +30,53 @@ def checkIfAllGood():
     return count == 0
 
 
-def clearScreen():
-    if sys.platform == 'win32':
-        os.system('cls')
+def menu():
+    check = checkIfAllGood()
+    clearScreen()
+    if check:
+        print("How do you want to proceed?")
+        print("1. Announcement API")
+        print("2. Routine API")
+        print("** Below options will only announce if there are contest available today **")
+        print("3. Trigger Announcement to check if everything is working fine")
+        print("4. Trigger Routine to check if everything is working fine")
+        var_input = input("\n>>> ")
+        return var_input
     else:
-        os.system('clear')
+        return False
+
+
+def main():
+    while True:
+        var_input = menu()
+        if var_input == False:
+            print("Please set all the variables in config.json")
+            break
+        if var_input == "1":
+            clearScreen()
+            announcement_main()
+            scheduler()
+        elif var_input == "2":
+            clearScreen()
+            routine_main()
+            scheduler()
+        elif var_input == "3":
+            clearScreen()
+            makeAnnouncement()
+            print("\nYou will hear your alexa announce if everything is working fine")
+            time.sleep(5)
+            clearScreen()
+        elif var_input == "4":
+            clearScreen()
+            runRoutineIfAvailable()
+            print("You will hear your alexa announce if everything is working fine")
+            time.sleep(5)
+            clearScreen()
+        else:
+            print("Invalid Input")
+            break
+    sys.exit(0)
 
 
 if __name__ == "__main__":
-    checkPassed = checkIfAllGood()
-    # clearScreen()
-    print("How would you like to proceed?")
-    print("Use Announcement API to announce the contest along with time")
-    print("\n1. Announcement API")
-    print("2. Routine API")
-    print("3. Test Functionality of Announcement API")
-    choice = input("\n>>> ")
+    main()

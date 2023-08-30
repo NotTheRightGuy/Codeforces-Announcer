@@ -13,12 +13,16 @@ Functions:
     contestToday: Returns the list of contests that are taking place today
     is_past: Checks if the given time is in past or not
     deletePastContest: Deletes the past contests from the database
+    extractHourMinute: Extracts the hour and minute from the given time
+    to_12_hour_format: Converts the given time to 12 hour format
+    clearScreen: Clears the screen
 
 
 Author : @NotTheRightGuy
 """
 
-
+import sys
+import os
 import requests
 import datetime
 from Client import get_client
@@ -202,3 +206,10 @@ def to_12_hour_format(time_str):
             hour -= 12
 
     return f"{hour}:{minute:02} {am_pm}"
+
+
+def clearScreen():
+    if sys.platform == 'win32':
+        os.system('cls')
+    else:
+        os.system('clear')

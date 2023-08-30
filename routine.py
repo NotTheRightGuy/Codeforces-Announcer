@@ -11,8 +11,12 @@ announce_time = env["EVENT_TRIGGER_TIME"]
 def runRoutineIfAvailable():
     contest_today = contestToday(fetchContestFromDatabase())
     if len(contest_today):
+        print("Contest Available for today")
+        print("Triggering Routine")
         triggerRoutine()
 
 
 def routine_main():
-    runEverydayAt(announce_time, runRoutineIfAvailable())
+    print("Starting Routine API\n")
+    print("Routine will be triggered at: ", announce_time)
+    runEverydayAt(announce_time, runRoutineIfAvailable)
