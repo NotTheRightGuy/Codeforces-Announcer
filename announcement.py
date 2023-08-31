@@ -23,7 +23,7 @@ def makeAnnouncement():
               contest["id"], " at ", contest["start_time"])
         time_of_contest = to_12_hour_format(
             extractHourMinute(contest["start_time"]))
-        text_to_speak = "You have a codeforces contest today at {}. Make sure to register yourself and attempt it.".format(
+        text_to_speak = "You have {} today at {}. Make sure to register yourself and attempt it.".format(contest['name'],
             time_of_contest)
         sendToAlexa(text_to_speak)
 
